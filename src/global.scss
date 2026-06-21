@@ -35,3 +35,20 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+:root {
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3,
+ion-title,
+ion-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}

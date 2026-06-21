@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Nova Criança</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fechar()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Nome *</ion-label>
+    <ion-input
+      [(ngModel)]="nome"
+      placeholder="Nome da criança"
+      type="text"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Data de Nascimento *</ion-label>
+    <ion-input
+      [(ngModel)]="dataNascimento"
+      type="date"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Nome do Responsável</ion-label>
+    <ion-input
+      [(ngModel)]="nomeResponsavel"
+      placeholder="Nome do responsável (opcional)"
+      type="text"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button
+    expand="block"
+    color="secondary"
+    class="botao-salvar"
+    [disabled]="!camposValidos() || salvando"
+    (click)="salvar()"
+  >
+    {{ salvando ? 'Salvando...' : 'Salvar Criança' }}
+  </ion-button>
+
+</ion-content>

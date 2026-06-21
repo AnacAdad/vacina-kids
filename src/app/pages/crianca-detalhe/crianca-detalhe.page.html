@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/criancas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ crianca?.nome }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="carregando" class="estado-vazio">
+    <p>Carregando dados...</p>
+  </div>
+
+  <ng-container *ngIf="!carregando && crianca">
+
+    <!-- Resumo / indicadores visuais -->
+    <ion-card class="card-resumo">
+      <ion-card-content>
+        <h2>{{ crianca.nome }}</h2>
+        <p>Responsável: {{ crianca.nomeResponsavel }}</p>
+
+        <div class="indicadores">
+          <div class="indicador">
+            <ion-icon name="checkmark-circle-outline" color="secondary"></ion-icon>
+            <span>{{ totalAplicadas }}</span>
+            <small>Aplicadas</small>
+          </div>
+
+          <div class="indicador">
+            <ion-icon name="time-outline" color="tertiary"></ion-icon>
+            <span>{{ totalPendentes }}</span>
+            <small>Pendentes</small>
+          </div>
+
+          <div class="indicador">
+            <ion-icon name="alert-circle-outline" color="warning"></ion-icon>
+            <span>{{ totalAtrasadas }}</span>
+            <small>Atrasadas</small>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Histórico vacinal -->
+    <h3 class="titulo-secao">Histórico Vacinal</h3>
+
+    <ion-list lines="full">
+      <ion-item *ngFor="let registro of registros" class="item-vacina" [class.item-aplicada]="registro.status === 'aplicada'">
+
+  <div slot="start" class="selo" [class.selo-aplicado]="registro.status === 'aplicada'" [ngClass]="'selo-' + registro.status">
+    <ion-icon [name]="iconeDoStatus(registro.status)"></ion-icon>
+  </div>
+
+  <ion-label>
+    <h2>{{ registro.nomeVacina }}</h2>
+    <p>{{ registro.dose }}</p>
+    <p>Previsto: {{ formatarData(registro.dataPrevista) }}</p>
+    <p *ngIf="registro.dataAplicada" class="data-aplicada">Aplicado em {{ formatarData(registro.dataAplicada) }}</p>
+  </ion-label>
+
+  <ion-badge [color]="corDoStatus(registro.status)" slot="end">
+    {{ textoDoStatus(registro.status) }}
+  </ion-badge>
+</ion-item>
+    </ion-list>
+
+  </ng-container>
+
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Nova Campanha</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fechar()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Título *</ion-label>
+    <ion-input
+      [(ngModel)]="titulo"
+      placeholder="Ex: Campanha Nacional de Multivacinação"
+      type="text"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Descrição</ion-label>
+    <ion-textarea
+      [(ngModel)]="descricao"
+      placeholder="Descreva a campanha"
+      [autoGrow]="true"
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Público-alvo *</ion-label>
+    <ion-input
+      [(ngModel)]="publicoAlvo"
+      placeholder="Ex: 0 a 5 anos"
+      type="text"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Data de Início *</ion-label>
+    <ion-input
+      [(ngModel)]="dataInicio"
+      type="date"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Data de Término *</ion-label>
+    <ion-input
+      [(ngModel)]="dataFim"
+      type="date"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button
+    expand="block"
+    color="secondary"
+    class="botao-salvar"
+    [disabled]="!camposValidos() || salvando"
+    (click)="salvar()"
+  >
+    {{ salvando ? 'Salvando...' : 'Salvar Campanha' }}
+  </ion-button>
+
+</ion-content>

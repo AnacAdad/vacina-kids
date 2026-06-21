@@ -1,3 +1,29 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>VacinaKids</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-item
+            *ngFor="let pagina of paginas"
+            (click)="navegarPara(pagina.url)"
+            button
+            detail="false"
+          >
+            <ion-icon [name]="pagina.icone" slot="start" color="primary"></ion-icon>
+            <ion-label>{{ pagina.titulo }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
 </ion-app>

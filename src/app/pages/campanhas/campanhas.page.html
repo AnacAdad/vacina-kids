@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Campanhas de Vacinação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="carregando" class="estado-vazio">
+    <p>Carregando campanhas...</p>
+  </div>
+
+  <ng-container *ngIf="!carregando">
+    <ion-card *ngFor="let campanha of campanhas" class="card-campanha">
+      <ion-card-header>
+        <div class="header-campanha">
+          <ion-icon name="megaphone-outline" color="primary"></ion-icon>
+          <ion-badge [color]="campanha.ativa ? 'secondary' : 'medium'">
+            {{ campanha.ativa ? 'Ativa' : 'Encerrada' }}
+          </ion-badge>
+        </div>
+        <ion-card-title>{{ campanha.titulo }}</ion-card-title>
+        <ion-card-subtitle>Público: {{ campanha.publicoAlvo }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ campanha.descricao }}</p>
+        <p class="periodo">
+          <ion-icon name="calendar-outline"></ion-icon>
+          {{ campanha.periodoFormatado }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="campanhas.length === 0" class="estado-vazio">
+      <p>Nenhuma campanha cadastrada no momento.</p>
+    </div>
+  </ng-container>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)="abrirModalNovaCampanha()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

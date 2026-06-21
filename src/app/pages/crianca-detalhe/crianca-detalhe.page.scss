@@ -1,0 +1,114 @@
+.card-resumo {
+  background: linear-gradient(135deg, #473C33, #594f47);
+  color: #ffffff;
+  border-radius: 16px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+  }
+}
+
+.indicadores {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.indicador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  ion-icon {
+    font-size: 28px;
+  }
+
+  span {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  small {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+  }
+}
+
+.titulo-secao {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+}
+
+.item-vacina {
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  --inner-padding-end: 8px;
+}
+
+.selo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 22px;
+  }
+}
+
+.selo-aplicada {
+  border: 2px solid var(--ion-color-secondary);
+  background: rgba(171, 194, 112, 0.12);
+  color: var(--ion-color-secondary-shade);
+  position: relative;
+
+  // efeito de "carimbo" levemente rotacionado e com borda dupla
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1px dashed var(--ion-color-secondary);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  transform: rotate(-6deg);
+}
+
+.selo-pendente {
+  border: 2px solid var(--ion-color-tertiary);
+  background: rgba(253, 167, 105, 0.12);
+  color: var(--ion-color-tertiary-shade);
+}
+
+.selo-atrasada {
+  border: 2px solid var(--ion-color-warning);
+  background: rgba(254, 200, 104, 0.15);
+  color: var(--ion-color-warning-shade);
+}
+
+.data-aplicada {
+  color: var(--ion-color-secondary-shade);
+  font-weight: 500;
+}
+
+.item-aplicada {
+  h2 {
+    color: var(--ion-color-dark);
+  }
+}
